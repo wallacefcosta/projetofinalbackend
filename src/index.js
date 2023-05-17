@@ -1,7 +1,8 @@
 import express from "express";
+import crypto from 'node:crypto'
 
 const app = express();
-const crypto = require('node:crypto')
+
 app.use(express.json());
 
 
