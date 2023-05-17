@@ -1,10 +1,13 @@
 import express from "express";
-import crypto from 'node:crypto'
+
 
 const app = express();
 
 app.use(express.json());
 
+let idUsuario = 0
+
+let idRecado = 0
 
 app.get("/", (request, response) => {
   return response.json(`Olá, seja bem vindo ao seu CRUD de recados.`);
@@ -19,7 +22,7 @@ app.post(`/user`, (request, response) => {
   const dados = request.body;
 
   const novoUsuario = {
-    id: crypto.randomUUID(),
+    id: ++idUsuario,
     nome: dados.nome,
     email: dados.email,
     password: dados.password,
@@ -112,7 +115,7 @@ app.post(`/recados`, (request, response) => {
   }
 
   const novoRecado = {
-    id: crypto.randomUUID(),
+    id: ++idRecado,
     titulo: dados.titulo,
     descricao: dados.descricao,
     autor: usuario,
